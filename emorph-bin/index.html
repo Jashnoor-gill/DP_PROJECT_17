@@ -37,7 +37,7 @@
             window.addEventListener('popstate', handleClientSideNavigation);
             window.addEventListener('hashchange', handleClientSideNavigation);
         </script>
-        <title>DV8 | Orchestrating AI for Industry Transformation</title>
+    <title>emorph-bin</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="theme-color" content="#000000">
@@ -1188,7 +1188,17 @@
             <div id="i1lwz-4" class="pwb-flex-grid-wrap">
                 <div id="i1lwz-2-3" class="pwb-flex-grid-wrap">
                     <div id="ispyh-2-2-3">Start Today</div>
-                        <div id="ispyh-2-2-2-3">E-Morph Bin Can Transform our Country's Future</div>
+                        <div id="ispyh-2-2-2-3" style="cursor:pointer;">E-Morph Bin Can Transform our Country's Future</div>
+                        <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var emorphBin = document.getElementById('ispyh-2-2-2-3');
+                            if (emorphBin) {
+                                emorphBin.addEventListener('click', function() {
+                                    window.location.href = 'http://localhost:8001';
+                                });
+                            }
+                        });
+                        </script>
                     <div id="ispyh-2-2-2-2-3">
                             Lorem ipsum dolor sit amet consectetur adipiscing elit quisque faucibus ex sapien vitae pellentesque sem.
                     </div>
