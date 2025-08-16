@@ -2,42 +2,36 @@
 <html lang="en">
     <head>
         <script>
-            function handleClientSideNavigation() {
-                setTimeout( () => {
-                    const scriptSrc = "https://js.hsforms.net/forms/embed/developer/8320310.js"
+function handleClientSideNavigation() {
+    setTimeout(() => {
+        const scriptSrc = "https://js.hsforms.net/forms/embed/developer/8320310.js";
+        const script = document.createElement('script');
+        script.src = scriptSrc;
+        script.type = 'text/javascript';
+        script.charset = 'utf-8';
+        document.head.appendChild(script);
+    }, 500);
+}
+// Define or remove the call to waterfallOptimizationScript if not needed
+// waterfallOptimizationScript();
 
-                    const script = document.createElement('script');
-                    script.src = scriptSrc;
-                    script.type = 'text/javascript';
-                    script.charset = 'utf-8';
-                    document.head.appendChild(script);
-                }
-                , 500);
-            }
+let lastKnownHref = window.location.href;
+const POLLING_INTERVAL = 200;
 
-            document.addEventListener('DOMContentLoaded', () => {
-                handleClientSideNavigation();
-            }
-            );
+function checkUrlChange() {
+    const currentHref = window.location.href;
+    if (currentHref !== lastKnownHref) {
+        lastKnownHref = currentHref;
+        handleClientSideNavigation();
+    }
+}
 
-            let lastKnownHref = window.location.href;
-            const POLLING_INTERVAL = 200;
-
-            function checkUrlChange() {
-                const currentHref = window.location.href;
-                if (currentHref !== lastKnownHref) {
-                    lastKnownHref = currentHref;
-                    handleClientSideNavigation();
-                }
-            }
-
-            document.addEventListener('DOMContentLoaded', () => {
-                setInterval(checkUrlChange, POLLING_INTERVAL);
-            }
-            );
-            window.addEventListener('popstate', handleClientSideNavigation);
-            window.addEventListener('hashchange', handleClientSideNavigation);
-        </script>
+document.addEventListener('DOMContentLoaded', () => {
+    setInterval(checkUrlChange, POLLING_INTERVAL);
+});
+window.addEventListener('popstate', handleClientSideNavigation);
+window.addEventListener('hashchange', handleClientSideNavigation);
+</script>
     <title>emorph-bin</title>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -87,8 +81,8 @@
                 t.async = !0;
                 t.src = v;
                 s = b.getElementsByTagName(e)[0];
-                s.parentNode.insertBefore(t, s)
-            // Removed Facebook tracking script
+                s.parentNode.insertBefore(t, s);
+            }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
             fbq('init', '772165068810627');
             fbq('track', 'PageView');
         </script>
@@ -202,24 +196,24 @@
                     <div id="imob0j-3-3-2" class="framer-1cc0f02"></div>
                     <div id="irxvxh" class="pwb-flex-grid-wrap">
                         <!-- Removed Mindhyve embed code -->
-  <div id=&quot;toggle-button&quot;>
-    <div class=&quot;slider&quot;></div>
+    <div id="toggle-button">
+        <div class="slider"></div>
 
-    <div class=&quot;icon left-icon&quot;>
-    <!-- Removed Mindhyve logo image -->
-    </div>
+        <div class="icon left-icon">
+        <!-- Removed Mindhyve logo image -->
+        </div>
 
-        <div class=&quot;icon right-icon&quot;>
+        <div class="icon right-icon">
             <!-- Removed DV8 Icon image -->
         </div>
-  </div>
-
-  <div id=&quot;overlay&quot;>
-    <div class=&quot;loader&quot;></div>
-    <div class=&quot;overlay-text&quot;>
-      <!-- Filled dynamically by JS -->
     </div>
-  </div>
+
+    <div id="overlay">
+        <div class="loader"></div>
+        <div class="overlay-text">
+            <!-- Filled dynamically by JS -->
+        </div>
+    </div>
 
     <style>
         /* Example: Add back valid selectors for custom styles if needed */
@@ -683,6 +677,8 @@
                     </div>
                     <div id="i1lwz-2-3-4-9-2" class="pwb-flex-grid-wrap">
                         <img src="https://files.peachworlds.com/website/6cb60017-1837-434c-9f1c-87d1a5d0f4c8/menu.svg" loading="lazy" id="iet44-4-9-2"/>
+                    </div>
+                    <!-- Paired missing </div> tag for line 684 -->
                     </div>
                 </div>
             </div>
@@ -1614,7 +1610,9 @@
                 </div>
             </div>
         </div>
-        <div id="pwb-loading-wrap">
+    <div id="pwb-loading-wrap">
+    <!-- Paired missing </div> tag for line 1612 -->
+    </div>
             <div id="i4fit3" pwb-embed-code="<div class=&quot;my-loading-page&quot;>
   <div class=&quot;my-spinner-wrapper&quot;>
     <div class=&quot;my-loading-spinner&quot;></div>
@@ -1867,8 +1865,7 @@
                     if (!resolveFn)
                         throw new Error(`Resolve function for file "${fileUrl}" not found.`);
                     resolveFn(blobUrl)
-                }
-                ;
+                };
                 window._pwWaitForExplicitFileResolve = fileUrl => {
                     if (!window._pwLoadFileResolveFnCache)
                         throw new Error(`Variable "_pwLoadFileResolveFnCache" is undefined.`);
@@ -1879,12 +1876,10 @@
                     let resolveFn = void 0;
                     const explicitWaitPromise = new Promise(resolve => {
                         resolveFn = resolve
-                    }
-                    );
+                    });
                     window._pwLoadFileResolveFnCache.set(fileUrl, resolveFn);
                     window._pwLoadFileRequestsCache.set(fileUrl, explicitWaitPromise)
-                }
-                ;
+                };
                 window._pwLoadFileFromCacheHelper = async fileUrl => {
                     if (!fileUrl)
                         return void 0;
@@ -1898,8 +1893,7 @@
                     } catch (error) {
                         return void 0
                     }
-                }
-                ;
+                };
                 window._pwLoadFileFromCache = async fileUrl => {
                     if (!fileUrl)
                         return void 0;
@@ -1913,12 +1907,13 @@
                         window._pwLoadFileRequestsCache.set(fileUrl, requestPromise)
                     }
                     return await requestPromise
+                };
+                for (const explicitResourceUrl of window._pwPreviewResourceUrls) {
+                    window._pwWaitForExplicitFileResolve(explicitResourceUrl);
                 }
-                ;
-                for (const explicitResourceUrl of window._pwPreviewResourceUrls)
-                    window._pwWaitForExplicitFileResolve(explicitResourceUrl)
-            }
-            )();
+            })();
+        </script>
+        );
         </script>
         <script type="text/javascript">
             window._pwExecLoadingPageJavascript = () => {
@@ -1928,4 +1923,3 @@
         </script>
     </body>
 </html>
-
