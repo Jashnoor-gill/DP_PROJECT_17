@@ -204,7 +204,8 @@ window.addEventListener('hashchange', handleClientSideNavigation);
         </div>
 
         <div class="icon right-icon">
-            <!-- Removed DV8 Icon image -->
+            <a href="https://dp-project-emorph-bin.netlify.app/" target="_blank">
+            </a>
         </div>
     </div>
 
@@ -337,7 +338,9 @@ window.addEventListener('hashchange', handleClientSideNavigation);
                                         <img src="https://files.staging.peachworlds.com/website/23424094-ad31-489d-8c42-256bce0cf48d/mindhyve-logo.svg" alt="Mindhyve Icon">
                                     </div>
                                     <div class="icon right-icon">
-                                        <img src="https://files.staging.peachworlds.com/website/0a2fb68d-06c3-4e12-8e09-a29951fcf0df/dv8-logoonly-2-0.svg" alt="DV8 Icon">
+                                        <a href="https://dp-project-emorph-bin.netlify.app/" target="_blank">
+                                            <img src="https://files.staging.peachworlds.com/website/0a2fb68d-06c3-4e12-8e09-a29951fcf0df/dv8-logoonly-2-0.svg" alt="DV8 Icon">
+                                        </a>
                                     </div>
                                 </div>
                                 <div id="overlay">
@@ -1912,4 +1915,22 @@ window.addEventListener('hashchange', handleClientSideNavigation);
             window._pwExecLoadingPageJavascript();
         </script>
     </body>
+    <script>
+    document.querySelectorAll('a[href="https://dp-project-emorph-bin.netlify.app/"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+            window.open(anchor.href, anchor.target === "_blank" ? "_blank" : "_self");
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        }, true);
+    });
+    </script>
+    <script>
+    document.addEventListener('click', function(e) {
+        let anchor = e.target.closest('a[href="https://dp-project-emorph-bin.netlify.app/"]');
+        if (anchor) {
+            // Allow normal navigation for this link
+            e.stopImmediatePropagation();
+        }
+    }, true);
+    </script>
 </html>
